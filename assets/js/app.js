@@ -27,7 +27,7 @@ cities.forEach((city) => {
     cityInput = event.target.innerHTML;
     /* Function that fetched and displays all the data from the Weather API */
     saveWeather();
-    app.style.opacity = 0;
+    app.style.opacity = 1;
   });
 });
 // Add submit event to the form
@@ -41,7 +41,7 @@ form.addEventListener("submit", (event) => {
     /* Function that fetched and displays all the data from the Weather API */
     // Fade out the app (simple animation)
     saveWeather();
-    app.style.opacity = 0;
+    app.style.opacity = 1;
     search.value = "";
   }
   //Prevents the default behaviour of the form
@@ -90,8 +90,8 @@ function saveWeather() {
           localTime = d.getTime();
           localOffset = d.getTimezoneOffset() * 60000;
           utc = localTime + localOffset;
-          var atlanta = utc + 1000 * jsonResponse.timezone;
-          nd = new Date(atlanta);
+          var x = utc + 1000 * jsonResponse.timezone;
+          nd = new Date(x);
           console.log(nd);
           let weatherIcon = jsonResponse.weather[0].icon;
           let current_time = nd.toString().split(" ");

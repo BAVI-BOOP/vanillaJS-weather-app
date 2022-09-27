@@ -27,7 +27,7 @@ cities.forEach((city) => {
     cityInput = event.target.innerHTML;
     /* Function that fetched and displays all the data from the Weather API */
     saveWeather();
-    app.style.opacity = 1;
+    app.style.opacity = 0;
   });
 });
 // Add submit event to the form
@@ -41,7 +41,7 @@ form.addEventListener("submit", (event) => {
     /* Function that fetched and displays all the data from the Weather API */
     // Fade out the app (simple animation)
     saveWeather();
-    app.style.opacity = 1;
+    app.style.opacity = 0;
     search.value = "";
   }
   //Prevents the default behaviour of the form
@@ -71,7 +71,7 @@ function saveWeather() {
   let lat;
 
   return fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${cityInput}&limit=${1}&appid=${WEATHER_API_KEY}`
+    `https://api.openweathermap.org/geo/1.0/direct?q=${cityInput}&limit=${1}&appid=${WEATHER_API_KEY}`
   )
     .then((response) => response.json())
     .then((jsonResponse) => {

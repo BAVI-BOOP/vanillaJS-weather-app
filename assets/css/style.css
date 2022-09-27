@@ -1,0 +1,304 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Rubik", sans-serif;
+  background: #111;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h3 {
+  font-weight: 400;
+}
+
+.weather-app {
+  min-height: 100vh;
+  background-image: url(./../images/day/cloudy.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fff;
+  position: relative;
+  transition: 500ms;
+  opacity: 0;
+  /* change this to '0  once the whole app is finished*/
+}
+
+/* add bg overlay */
+.weather-app::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 0;
+}
+
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 2em 3em 4em 3em;
+}
+
+.container > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.city-time,
+.temp,
+.weather {
+  margin: 0 1em;
+}
+
+.city-time h1 {
+  margin: 0;
+  margin-bottom: 0.2em;
+  font-size: 3em;
+}
+
+.temp {
+  font-size: 7em;
+  margin: 0;
+}
+
+.weather img {
+  display: block;
+  margin: 0.5em 0;
+}
+
+.panel {
+  position: absolute;
+  width: 40%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background: rgba(110, 110, 110, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  z-index: 1;
+  padding: 3em 2em;
+  overflow-y: scroll;
+}
+
+.panel form {
+  margin-bottom: 3em;
+}
+
+.submit {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1.5em;
+  margin: 0;
+  border: none;
+  outline: none;
+  background: #fa6d1b;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.2em;
+  transition: 0.4s;
+}
+
+.submit:hover {
+  background: #fff !important;
+  color: #000;
+}
+
+.search {
+  background: none;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 0 1em 0.5em 0;
+  width: 80%;
+  color: #fff;
+  font-size: 1.1em;
+}
+
+.search:focus {
+  outline: none;
+}
+
+.search:placeholder {
+  color: #ccc;
+}
+
+.panel ul {
+  padding: 0 0 1em 0;
+  margin: 2em 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.panel ul li {
+  color: #ccc;
+  margin: 2.5em 0;
+}
+
+.panel ul h4 {
+  margin: 3em 0;
+}
+
+.city {
+  display: block;
+  cursor: pointer;
+}
+
+.city:hover {
+  color: #fff;
+}
+
+.details li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media screen and (max-width: 800px) {
+  .panel,
+  .container {
+    position: relative;
+    width: 100%;
+    top: initial;
+  }
+
+
+}
+
+@media screen and (max-width: 500px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .weather-app {
+    min-height: 40em;
+  }
+}
+
+#forecast {
+  border: 1px solid rgb(133, 113, 113);
+  text-align: center;
+  opacity: 0;
+}
+
+#forecast:hover {
+  background-color: rgba(136, 133, 133, 0.589);
+}
+
+#modal-container {
+  transform: translate(4rem, 8rem);
+}
+
+/* Accordion */
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.daily-item {
+  background-color: #f5f5f5;
+  border-radius: 1rem;
+  height: 2.5rem;
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 5px 1.25rem;
+}
+
+.icon-small {
+  width: 2.5rem;
+}
+
+.day {
+  color: #212121;
+  flex: 1 1;
+  font-weight: 600;
+  margin-left: 1rem;
+}
+
+.description {
+  flex: 1 1;
+  margin-right: 1rem;
+  text-align: right;
+}
+
+.min-max {
+  color: #757575;
+}
+
+.daily-details-grid {
+  grid-row-gap: 0;
+  grid-column-gap: 1rem;
+  column-gap: 1rem;
+  row-gap: 0;
+  display: grid;
+  flex: 1 1;
+  grid-template-columns: auto auto;
+  padding: 5px 1rem;
+}
+
+.daily-details-grid-item {
+  align-items: center;
+  display: flex;
+  height: 2.5rem;
+  justify-content: space-between;
+}
+
+.daily-details-grid-item label:first-child {
+  color: #757575;
+}
+.daily-details-grid-item label:last-child {
+  color: #212121;
+}
+
+#accordionFlushExample {
+  opacity: 0;
+  width: 710px;
+  position: relative;
+  top: 10rem;
+
+}
+
+#accordionFlushExample.visible {
+  opacity: 0.7;
+  opacity: 1;
+  transition: 2s;
+}
+
+@media screen and (max-width: 1100px) {
+  #accordionFlushExample {
+    width: 600px !important;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #accordionFlushExample {
+    width: 400px !important;
+    transform: translateY(1rem);
+    top: 1rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #accordionFlushExample {
+    width: 350px !important;
+  }
+}

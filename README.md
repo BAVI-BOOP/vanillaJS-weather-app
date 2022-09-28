@@ -4,7 +4,7 @@
 
 
 
-# Project : Film Finder
+# Project : Weather App
 
 ## Table of contents
 
